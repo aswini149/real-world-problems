@@ -1,0 +1,43 @@
+**Problem Statement**
+
+You are given a list of votes for an election using the *Instant Runoff Voting (IRV)* system.
+
+* Each voter provides a ranked list of candidates, ordered by preference.
+* In each round:
+
+  1. Only the **first preference** (index `0`) of each voter is counted.
+  2. If any candidate gets **more than 50% of the total votes**, that candidate wins immediately.
+  3. Otherwise, the candidate with the **minimum number of votes** is eliminated.
+
+     * If multiple candidates have the same minimum votes, eliminate the candidate with the **smallest candidate ID**.
+  4. Remove the eliminated candidate from **all ballots**.
+  5. Repeat the process with the updated ballots until a winner is found.
+
+Return the ID of the winning candidate.
+
+    [
+      [1, 2, 3],
+      [2, 1, 3],
+      [3, 2, 1],
+      [1, 3, 2]
+    ]
+
+**Output:**
+
+* An integer representing the candidate ID who wins the election.
+
+---------------------------------------------------------------
+
+1. Count only the first element of each vote list.
+2. Majority check:
+   value > totalVotes / 2
+3. Elimination:
+   * Find minimum vote count.
+   * If tie → eliminate the candidate with the smallest ID.
+4. Ballot update:
+   * Remove eliminated candidate from every vote list.
+5. Continue indefinitely until a winner emerges.
+
+**In one line:**
+
+> Implement the Instant Runoff Voting algorithm to determine the winning candidate from a set of ranked ballots, repeatedly eliminating the lowest-voted candidate and redistributing votes until one candidate has a strict majority.
